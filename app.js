@@ -11,6 +11,8 @@ const ExpressError = require("./utils/expressError.js");
 const { listingSchema, reviewSchema } = require("./schema.js");
 const Review = require("./models/review.js");
 const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
@@ -21,7 +23,6 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "/public")));
-
 app.use(cookieParser("secretcode"));
 main()
   .then(() => {
@@ -31,19 +32,39 @@ main()
     console.log(err);
   });
 
+const sessionOptions = {
+  secret: "mysupersecretstring",
+  resave: false,
+  saveUninitialized: true,
+  cookie:{
+    expires:Date.now()+7*24*60*60*1000,
+    maxAge:7*24*60*60*1000,
+    httpOnly:true,
+  }
+};
+
 async function main() {
   await mongoose.connect(MONGO_URL);
 }
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use((req,res,next)=>{
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
 
 app.listen(8080, () => {
   console.log("Server Running on port 8080");
 });
 
 app.get("/", (req, res) => {
-    res.cookie("main","wanderlust",{signed:true});
+  res.cookie("main", "wanderlust", { signed: true });
 
-    console.dir(req.signedCookies);
-    let {main="unknown"} = req.signedCookies;
+  console.dir(req.signedCookies);
+  let { main = "unknown" } = req.signedCookies;
   res.send(`Root of ${main}`);
 });
 
