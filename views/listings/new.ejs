@@ -1,0 +1,47 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <form method="post" action="/listings" class="newForm " novalidate>
+  
+    <legend>Create New Listing</legend>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" placeholder="Enter your title" name="listing[title]" required>
+      <div class="valid-feedback">Title looks good!</div>
+      <div class="invalid-feedback">Please Enter the Title</div>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea type="text" class="form-control" placeholder="Enter your description" name="listing[description]" required></textarea>
+      <div class="valid-feedback">Description is good</div>
+      <div class="invalid-feedback">Please Enter Description</div>
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Image URL</label>
+      <input type="text" class="form-control" placeholder="Enter your Image URL" name="listing[image]">
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input  class="form-control" placeholder="Enter Price" name="listing[price]" required>
+      <div class="valid-feedback">Price looks good!</div>
+      <div class="invalid-feedback">Please Enter a valid Price</div>
+    </div>
+    <div class="loc-cou
+    ">
+    <div class="mb-3 location">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" class="form-control" placeholder="Enter Location" name="listing[location]" required>
+      <div class="valid-feedback">Location looks good!</div>
+      <div class="invalid-feedback">Please Enter a valid Location</div>
+    </div>
+    <div class="mb-3 country">
+      <label for="country" class="form-label">Country</label>
+      <input type="text" class="form-control" placeholder="Enter Country" name="listing[country]" required>
+      <div class="valid-feedback">Country looks good!</div>
+      <div class="invalid-feedback">Please Enter a valid Country</div>
+    </div>
+      
+    </div>
+    
+    <button type="submit" class="btn btn-dark add-btn">Add</button>
+  </form>
+</body>

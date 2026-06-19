@@ -1,0 +1,10 @@
+form Validations:
+    When we enter data in the form the browser and or web server will check to see taht data is in the correct format and within the constrainst set by the application
+
+Express Router:
+    Express Router are a way to orgranize your Espress application such that our primary app.js file doew not become bloated.
+
+    const router = express.Router()  //creates new router object
+
+Web Cookies:
+    HTTP cookies are small blocks of data created by a web server while a user is browsing a website and placed on the the user's computer or other device by the user's web browser.
