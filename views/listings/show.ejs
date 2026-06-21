@@ -4,6 +4,7 @@
     <h2><%=listing.title%></h2>
     <div class="img"><img src="<%=listing.image%>" alt="" /></div>
     <div class="show-info">
+      <p>Owned By: <b><i><%=listing.owner.username%></i></b></p>
       <%=listing.description%> <br />
       &#x20B9;<%=listing.price.toLocaleString("en-in")%> <br />
       <%=listing.location%> <br />

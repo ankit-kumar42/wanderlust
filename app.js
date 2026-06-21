@@ -35,7 +35,9 @@ main()
   .catch((err) => {
     console.log(err);
   });
-
+process.on("warning",(warning)=>{
+  console.log(warning.stack);
+})
 const sessionOptions = {
   secret: "mysupersecretstring",
   resave: false,
@@ -54,9 +56,9 @@ async function main() {
 app.use(session(sessionOptions));
 app.use(flash());
 
-passport.use (passport.initialize());
-passport.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate));
+app.use (passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -73,6 +75,7 @@ app.get("/demoUser", async (req, res) => {
 app.use((req,res,next)=>{
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currUser = req.user;
   next();
 });
 
