@@ -13,6 +13,6 @@ router.post("", isLoggedIn,validateReview,ReviewController.addReview);
 
 //DELETE REVIEW
 router.delete("/:reviewId",
-    isLoggedIn,isReviewAuthor,ReviewController.deleteReview);
+    isLoggedIn,isReviewAuthor,ReviewController.destroyReview);
 
 module.exports = router;

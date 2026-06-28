@@ -1,21 +1,89 @@
 <% layout("/layouts/boilerplate.ejs") %>
+<style>
+    .tax-info{
+        display: none;
+    }
+    .options{
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        height: 4rem;
+        margin: auto;
+    }
+    .filters{
+        width: 50%;
+        justify-content: space-evenly;
+        display: flex;
+        align-items: center;
+    }
+    .nav-options{
+        top:5rem;
+        position: sticky;
+        z-index: 10;
+    }
+</style>
 <body>
-   <h2 class="all-listings-head">All Listings</h2>
+    <nav class="nav-options">
+    <div class="options">
+
+    <div class="filters">
+        <div class="filter">
+       <i class="fa-solid fa-globe"></i>
+       <a href="">All</a>
+      </div>
+      <div class="filter">
+       <i class="fa-solid fa-house-chimney"></i>
+       <a href="">Homes</a>
+      </div>
+      <div class="filter">
+      <i class="fa-solid fa-parachute-box"></i>
+       <a href="">Experiences</a>
+      </div>
+      <div class="filter">
+       <i class="fa-solid fa-bell-concierge"></i>
+       <a href="">Services</a>
+      </div>
+    </div>
+    <div class="tax-toggler">
+    <div class="form-check form-switch taxBtn">
+  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+  <label class="form-check-label" for="switchCheckDefault">Show Prices including Taxes</label>
+</div>
+    </div>
+    </div>
+    </nav>
    <div class="listing-cards">
     <%for(let listing of allListings){%>
         <a href="/listings/<%=listing._id%>">
     <div class="listing-card">
         <div class="card-img">
-            <img src="<%=listing.image%>" alt="" class="card-img">
+            <img src="<%=listing.image.url%>" alt="" class="card-img">
         </div>
         <div class="listing-title">
             <h6><%=listing.title%></h6>
         </div>
         <div class="listing-price">
-            &#x20B9;<%=listing.price.toLocaleString("en-in")%>/night
+            &#x20B9;<%=listing.price.toLocaleString("en-in")%>/night &nbsp;&nbsp;
+            <i class="tax-info">+18% GST</i>
         </div>
     </div>
     </a>
     <%}%>
    </div>
 </body>
+<script>
+    let taxBtn = document.querySelector(".taxBtn");
+
+    taxBtn.addEventListener("click",(req,res)=>{
+        let taxInfo = document.getElementsByClassName("tax-info");
+        for(info of taxInfo){
+            if(info.style.display!="inline"){
+                info.style.display="inline";
+            }else{
+                info.style.display="none";
+            }
+        }
+    });
+</script>

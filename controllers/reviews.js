@@ -13,7 +13,7 @@ module.exports.addReview = wrapAsync(async(req,res)=>{
     res.redirect(`/listings/${listing._id}`);
 });
 
-module.exports.deleteReview = wrapAsync(async(req,res)=>{
+module.exports.destroyReview = wrapAsync(async(req,res)=>{
     let{id,reviewId} = req.params;
     await Listing.findByIdAndUpdate(id,{$pull:{reviews:reviewId}});
     await Review.findByIdAndDelete(reviewId);

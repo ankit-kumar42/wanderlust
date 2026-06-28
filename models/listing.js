@@ -8,13 +8,8 @@ const listingSchema = new Schema({
   },
   description: String,
   image: {
-    type: String,
-    default:
-      "https://media.cntraveler.com/photos/63f4daab3eca5676cc7af695/16:9/w_2560,c_limit/1%20Hotel%20Hanalei%20Bay_1HOTEL-ADULT-POOL-1REVISED.jpg",
-    set: (v) =>
-      v === ""
-        ? "https://media.cntraveler.com/photos/63f4daab3eca5676cc7af695/16:9/w_2560,c_limit/1%20Hotel%20Hanalei%20Bay_1HOTEL-ADULT-POOL-1REVISED.jpg"
-        : v,
+    url:String,
+    filename:String
   },
   price: Number,
   location: String,
