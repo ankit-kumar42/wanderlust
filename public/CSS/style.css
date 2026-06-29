@@ -4,6 +4,7 @@ body {
   min-height: 100vh;
 }
 .main {
+  margin-top: 5rem;
   flex: 1;
 }
 
@@ -52,7 +53,7 @@ footer {
 .listing-cards {
   width: 90%;
   margin: 0 auto;
-  margin-top: 6rem;
+  margin-top: 3rem;
   display: flex;
   flex-wrap: wrap;
 }
@@ -64,10 +65,6 @@ footer {
   margin: auto;
 }
 .listing-card {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
   padding-left: 1.4rem;
   height: 20rem;
 }
@@ -223,7 +220,6 @@ footer {
 .tax-info {
   display: none;
 }
-
 .options {
   width: 100%;
   background-color: white;
@@ -243,9 +239,11 @@ footer {
 }
 
 .nav-options {
-  width: 100% !important;
-  top: 5rem;
-  position: sticky;
+  border: 1px solid rgba(128, 128, 128, 0.619);
+  background-color: white;
+  width: 100%;
+  top: 5rem; 
+   position: sticky;
   z-index: 10;
 }
 @media (max-width: 780px) {
@@ -304,10 +302,10 @@ footer {
     padding-bottom: 1rem;
   }
   .options {
-    position: fixed;
-    width: 100vw;
+    /* position: fixed; */
+    /* width: 100vw;/ */
     left: 0;
-    top: 5rem;
+    /* top: 5rem;/ */
   }
   .filters {
     position: fixed;

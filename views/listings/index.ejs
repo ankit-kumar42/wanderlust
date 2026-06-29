@@ -28,6 +28,7 @@
                 </div>
             </div>
         </nav>
+<%-include("../includes/flash.ejs")%>
         <div class="listing-cards">
             <%for(let listing of allListings){%>
                 <a href="/listings/<%=listing._id%>">
