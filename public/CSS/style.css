@@ -275,6 +275,10 @@ footer {
   .filter i {
     display: none;
   }
+  .listing-cards{
+    margin-top: 10rem;
+
+  }
   .listing-cards a {
     margin: auto;
   }
