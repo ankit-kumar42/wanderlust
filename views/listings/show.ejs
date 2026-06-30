@@ -2,7 +2,42 @@
 <body>
   <div class="show-div">
     <h2><%=listing.title%></h2>
-    <div class="img"><img src="<%=listing.image.url%>" alt="" /></div>
+    <div class="img-reserve">
+      <div class="img"><img src="<%=listing.image.url%>" alt="" /></div>
+      <div class="reserve">
+        <h2>&#x20B9;<%=listing.price.toLocaleString("en-in")%> <span>/night</span></h2>
+        <div class="check-in-out">
+          <div class="check-in">
+            <p>CHECK-IN</p>
+            <p>17/04/26</p>
+          </div>
+          <div class="check-out">
+            <p>CHECK-IN</p>
+            <p>17/04/26</p>
+          </div>
+        </div>
+        <div class="guests">
+          <div>
+            <p>GUESTS</p>
+          <p>2 guests</p>
+          </div>
+          <div class="guests-drop-down">
+            <i class="fa-solid fa-angle-down"></i>
+          </div>
+        </div>
+        <div class="free-cancel">
+          <p>Free cancellation before <b>23 July</b></p>
+        </div>
+        <div class="reserve-btn">
+          <button><a href="#">RESERVE</a></button>
+        </div><br>
+        <div>
+          <p>You won't be charged yet</p>
+        </div>
+      </div>
+    
+    </div>
+    
     <div class="show-info">
       <p>Owned By: <b><i><%=listing.owner.username%></i></b></p>
       <%=listing.description%> <br />

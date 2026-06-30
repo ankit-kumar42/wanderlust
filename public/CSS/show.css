@@ -1,0 +1,126 @@
+.show-div {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-top: 0;
+  width: 75%;
+  margin: 2rem auto 0 auto;
+}
+.show-div .img {
+  /* border: 1px solid red; */
+  height: 22rem;
+  width: 100%;
+  border-radius: 10px;
+}
+.show-div .img img {
+  /* height: 22rem;
+    width: 40rem; */
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.img-reserve {
+  display: flex;
+}
+.reserve {
+  height: 22rem;
+  width: 100%;
+  margin-left: 4rem;
+  margin-right: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 4px 4px 8px rgb(198, 196, 196);
+}
+.check-in-out {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.check-in,
+.check-out {
+  height: 4rem;
+  border: 1px solid black;
+  width: 50%;
+  padding-left: 1rem;
+}
+.check-in {
+  border-right: none;
+  border-radius: 5px 0 0 0;
+}
+.check-out {
+  border-radius: 0 5px 0 0;
+}
+.check-in p,
+.check-out p,
+.guests p {
+  margin: 0;
+  font-weight: 500;
+}
+.reserve .guests {
+  display: flex;
+  height: 4rem;
+  width: 90%;
+  padding-left: 1rem;
+  border: 1px solid black;
+  border-radius: 0 0 5px 5px;
+}
+.guests .guests-drop-down {
+  margin-left: auto;
+  margin-right: 2rem;
+  margin-top: 1rem;
+}
+.reserve .guests {
+  border-top: none;
+}
+.free-cancel {
+  width: 90%;
+  border-radius: 5px;
+  margin-top: 1rem;
+  background-color: rgba(225, 222, 222, 0.699);
+  display: flex;
+  justify-content: center;
+}
+.free-cancel p {
+  margin: 0;
+  opacity: 0.9;
+  padding: 0.4rem 0;
+}
+.reserve-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 90%;
+}
+.reserve-btn button {
+  width: 100%;
+  height: 2.8rem;
+  background-color: #fe424d;
+  border: none;
+  border-radius: 20px;
+}
+.reserve-btn button:hover {
+  background-color: #f82534;
+}
+.reserve-btn button a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+@media (max-width: 820px) {
+  .show-div {
+    width: 100%;
+    margin: 4rem 0 0 0.6rem;
+  }
+  .img-reserve {
+    display: block;
+  }
+  .reserve {
+    margin: 2rem 0 2rem 0;
+  }
+}

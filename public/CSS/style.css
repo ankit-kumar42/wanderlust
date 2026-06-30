@@ -121,39 +121,7 @@ footer {
   background-color: #fe424d;
   border-color: #fe424d;
 }
-/* SHOW */
-.show-div {
-  width: 50%;
-  margin: 2rem auto;
-}
-.show-div .img img {
-  width: 100%;
-  height: 50vh;
-  border-radius: 40px;
-}
-.show-info,
-.buttons {
-  padding: 0.4rem 1rem;
-}
-.show-div .buttons {
-  display: flex;
-  gap: 2rem;
-}
-.show-div .img img {
-  box-shadow: 4px 4px 8px gray;
-}
-.review-card {
-  box-shadow: 2px 2px 4px gray;
-  border-radius: 20px;
-  transition: 0.2s ease-in-out;
-}
-.review-card:hover {
-  transform: translateY(-2px);
-}
-.review-delete-btn {
-  font-size: 0.8rem;
-  height: 2rem;
-}
+
 .wanderlust {
   display: flex;
   align-items: center;
@@ -194,18 +162,10 @@ footer {
   cursor: pointer;
   font-size: 2rem;
 }
-.filter .fa-globe {
-  color: rgb(151, 128, 1);
+.filter i {
+  color: rgba(128, 128, 128, 0.703);
 }
-.filter .fa-house-chimney {
-  color: rgb(52, 194, 241);
-}
-.filter .fa-parachute-box {
-  color: rgb(245, 162, 6);
-}
-.filter .fa-bell-concierge {
-  color: gray;
-}
+
 .filter a {
   font-weight: 500;
   font-size: 1rem;
@@ -213,9 +173,11 @@ footer {
   color: black;
   opacity: 0.7;
 }
-.filter a:hover {
+.filter a:hover{
   opacity: 1;
+  color: #fe424d;
   text-decoration: underline;
+  
 }
 .tax-info {
   display: none;
