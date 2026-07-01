@@ -18,6 +18,21 @@ router
 
 router.get("/new", isLoggedIn, ListingController.renderNewForm);
 
+router.get("/homes", async(req, res) => {
+  const allListings = await Listing.find();
+  res.render("./listings/homesListing.ejs",{allListings});
+});
+
+router.get("/experiences", async (req, res) => {
+  const allListings = await Listing.find();
+  res.render("./listings/experienceListing.ejs", { allListings });
+});
+
+router.get("/services", async (req, res) => {
+  const allListings = await Listing.find();
+  res.render("./listings/serviceListing.ejs", { allListings });
+});
+
 router
   .route("/:id")
   .put(isLoggedIn, isOwner, upload.single("listing[image]"),ListingController.updateListing)
@@ -26,5 +41,6 @@ router
 
 //EDIT ROUTE
 router.get("/:id/edit", isLoggedIn, isOwner, ListingController.renderEditForm);
+
 
 module.exports = router;

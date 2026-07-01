@@ -57,6 +57,14 @@ footer {
   display: flex;
   flex-wrap: wrap;
 }
+.listing-category{
+        text-decoration: underline;
+        margin-top: 2rem;
+        margin-left: 7rem;
+    }
+    .listing-cards{
+        margin-top: 2rem;
+    }
 .all-listings-head {
   width: 90%;
   margin-left: 5rem;
