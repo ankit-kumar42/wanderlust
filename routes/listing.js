@@ -18,19 +18,10 @@ router
 
 router.get("/new", isLoggedIn, ListingController.renderNewForm);
 
-router.get("/homes", async(req, res) => {
+router.get("/new/:option", async(req, res) => {
+  let option = req.params;
   const allListings = await Listing.find();
-  res.render("./listings/homesListing.ejs",{allListings});
-});
-
-router.get("/experiences", async (req, res) => {
-  const allListings = await Listing.find();
-  res.render("./listings/experienceListing.ejs", { allListings });
-});
-
-router.get("/services", async (req, res) => {
-  const allListings = await Listing.find();
-  res.render("./listings/serviceListing.ejs", { allListings });
+  res.render("./listings/optionListing.ejs",{allListings,option:option.option});
 });
 
 router
