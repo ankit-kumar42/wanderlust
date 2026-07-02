@@ -1,134 +1,222 @@
-<%layout("/layouts/boilerplate.ejs")%>
-<body>
-  <div class="show-div">
-    <h2><%=listing.title%></h2>
-    <div class="img-reserve">
-      <div class="img"><img src="<%=listing.image.url%>" alt="" />
-        <h3>Entire rental unit in Noida, India</h3>
-      </div>
-      <div class="reserve">
-        <h2>&#x20B9;<%=listing.price.toLocaleString("en-in")%> <span>/night</span></h2>
-        <div class="check-in-out">
-          <div class="check-in">
-            <p>CHECK-IN</p>
-            <p>17/04/26</p>
-          </div>
-          <div class="check-out">
-            <p>CHECK-OUT</p>
-            <p>23/05/26</p>
-          </div>
+<%layout(" /layouts/boilerplate.ejs")%>
+
+  <body>
+    <div class="show-div">
+      <h2>
+        <%=listing.title%>
+      </h2>
+      <div class="img-reserve">
+        <div class="img"><img src="<%=listing.image.url%>" alt="" />
+          <h3>Entire rental unit in Noida, India</h3>
         </div>
-        <div class="guests">
+        <div class="reserve">
+          <h2>&#x20B9;<%=listing.price.toLocaleString("en-in")%> <span>/night</span></h2>
+          <div class="check-in-out">
+            <div class="check-in">
+              <p>CHECK-IN</p>
+              <p>17/04/26</p>
+            </div>
+            <div class="check-out">
+              <p>CHECK-OUT</p>
+              <p>23/05/26</p>
+            </div>
+          </div>
+          <div class="guests">
+            <div>
+              <p>GUESTS</p>
+              <p>2 guests</p>
+            </div>
+            <div class="guests-drop-down">
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+          </div>
+          <div class="free-cancel">
+            <p>Free cancellation before <b>23 July</b></p>
+          </div>
+          <div class="reserve-btn">
+            <button><a href="#">RESERVE</a></button>
+          </div><br>
           <div>
-            <p>GUESTS</p>
-          <p>2 guests</p>
-          </div>
-          <div class="guests-drop-down">
-            <i class="fa-solid fa-angle-down"></i>
+            <p>You won't be charged yet</p>
           </div>
         </div>
-        <div class="free-cancel">
-          <p>Free cancellation before <b>23 July</b></p>
-        </div>
-        <div class="reserve-btn">
-          <button><a href="#">RESERVE</a></button>
-        </div><br>
-        <div>
-          <p>You won't be charged yet</p>
-        </div>
+
       </div>
-    
-    </div>
-    <div class="host">
-      <div class="host-name">
-        <div class="host-img"><img src="https://imgcdn.stablediffusionweb.com/2024/10/2/e422911e-e632-4a91-a4af-110348c278f4.jpg" alt=""></div>
-        <div>
-          <p><b>Hosted by Radha Kumari</b></p>
-          <p class="hosting">Superhost 6 Months Hosting</p>
-        </div>
-        
-      </div>
-      
-    </div>
-    <div class="show-info">
-      <%=listing.description%> <br />
-      &#x20B9;<%=listing.price.toLocaleString("en-in")%> <br />
-      <%=listing.location%> <br />
-      <%=listing.country%>
-    </div>
-   <%if(currUser && listing.owner.equals(currUser._id)){%>
-    <div class="buttons">
-      <form method="get" action="/listings/<%=listing._id%>/edit">
-        <button class="btn btn-dark">Edit</button>
-      </form>
-      <form method="post" action="/listings/<%=listing._id%>?_method=delete">
-        <button class="btn btn-dark">DELETE</button>
-      </form>
-    </div>
-    <%}%>
-    <%if(currUser){%>
-    <hr>
-    <div class="review mt-4">
-      <h4>Leave a Review</h4>
-      <form method="post" action="/listings/<%=listing._id%>/review" class="needs-validation" novalidate>
-        <div class="rating">
-        <fieldset class="starability-slot">
-  <legend>Rating</legend>
-  <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
-  <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-  <label for="first-rate1" title="Terrible">1 star</label>
-  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-  <label for="first-rate2" title="Not good">2 stars</label>
-  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-  <label for="first-rate3" title="Average">3 stars</label>
-  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-  <label for="first-rate4" title="Very good">4 stars</label>
-  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-  <label for="first-rate5" title="Amazing">5 stars</label>
-</fieldset>
-      </div>
-      <div class="mb-3">
-      <label for="comment" class="form-label">Comment</label>
-      <textarea type="text" class="form-control" placeholder="Leave your Comments..." name="review[comment]" required></textarea>
-      <div class="valid-feedback">comment looks good!</div>
-      <div class="invalid-feedback">Enter your comment</div>
-      <br>
-      <button type="submit" class="btn btn-outline-dark">Submit</button>
-      </form>
-    </div>
-    <%}%>
-    <hr>
-    <h4>All Reviews</h4>
-      <div class="">
-        <%for(review of listing.reviews){%>
-        <div class="card col-5 mb-5 ms-5 review-card">
-          <div class="card-body">
-          <h5 class="card-title">@<%=review.author.username%></h5>
-          <p  class="starability-result" data-rating="<%=review.rating%>">
-          </p>
-           <p class="card-text"><%=review.comment%></p>
-            <p class="card-text"><%=review.rating%> stars</p>
+      <div class="host">
+        <div class="host-name">
+          <div class="host-img"><img
+              src="https://imgcdn.stablediffusionweb.com/2024/10/2/e422911e-e632-4a91-a4af-110348c278f4.jpg" alt="">
           </div>
-          <form method="post"  action="/listings/<%=listing._id%>/review/<%=review._id%>?_method=DELETE">
-            <%if(review && review.author.equals(currUser._id)){%>
-            <button class="btn btn-outline-dark mb-3 ms-3 review-delete-btn">Delete</button>
-            <%}%>
+          <div>
+            <p><b>Hosted by Radha Kumari</b></p>
+            <p class="hosting">Superhost 6 Months Hosting</p>
+          </div>
+        </div>
+      </div>
+      <div class="listing-facility">
+        <div class="facility">
+          <div><i class="fa-solid fa-trophy"></i></div>
+          <div>
+            <p id="para1">Top 1% of homes</p>
+            <p id="para2">This home is one of the highet ranked basssed on rating, revies and reliability</p>
+          </div>
+        </div>
+        <div class="facility">
+          <div><i class="fa-solid fa-key"></i></div>
+          <div>
+            <p id="para1">Exceptional check-in experience</p>
+            <p id="para2">Recent guests gave the check-in process a 5-star rating.</p>
+          </div>
+        </div>
+        <div class="facility">
+          <div><i class="fa-solid fa-fan"></i></div>
+          <div>
+            <p id="para1">Designed for staying cool</p>
+            <p id="para2">Beat the heat with the A/C and ceiling fan.</p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="show-info">
+        <p id="listing-desc">
+          <%=listing.description%>
+        </p>
+        <hr>
+      </div>
+      <div>
+        <h3>What this place offers</h3>
+        <br>
+        <div class="listing-offer">
+          <div>
+            <div class="offer">
+              <i class="fa-solid fa-kitchen-set"></i>
+              <p>Kitchen</p>
+            </div>
+            <div class="offer">
+              <i class="fa-solid fa-car"></i>
+              <p>Free parking on premises</p>
+            </div>
+            <div class="offer">
+              <i class="fa-solid fa-elevator"></i>
+              <p>Lift</p>
+            </div>
+            <div class="offer">
+              <i class="fa-solid fa-snowflake"></i>
+              <p>Air conditioning</p>
+            </div>
+            <div class="offer">
+              <i class="fa-solid fa-box"></i>
+              <p>Carbon monoxide alarm</p>
+            </div>
+          </div>
+          <div>
+            <div class="offer">
+              <i class="fa-solid fa-wifi"></i>
+              <p>Wifi</p>
+            </div>
+            <div class="offer">
+              <i class="fa-solid fa-tv"></i>
+              <p>Free parking on premises
+                55-inch TV</p>
+            </div>
+            <div class="offer">
+              <i class="fa-solid fa-shirt"></i>
+              <p>Free washer–In unit</p>
+            </div>
+            <div class="offer">
+              <i class="fa-solid fa-camera"></i>
+              <p>Exterior security cameras on property</p>
+            </div>
+            <div class="offer">
+              <i class="fa-solid fa-ban-smoking"></i>
+              <p>Smoke alarm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <%if(currUser && listing.owner.equals(currUser._id)){%>
+        <div class="buttons">
+          <form method="get" action="/listings/<%=listing._id%>/edit">
+            <button class="btn btn-dark">EDIT</button>
+          </form>
+          <form method="post" action="/listings/<%=listing._id%>?_method=delete">
+            <button class="btn btn-dark">DELETE</button>
           </form>
         </div>
-      <%}%>
-      </div>
-  </div>
-  
-  <script>
-  // This is an example script, please modify as needed
-  const rangeInput = document.getElementById('rating');
-  const rangeOutput = document.getElementById('rangeValue');
+        <%}%>
+          <%if(currUser){%>
+            <hr>
+            <div class="review mt-4">
+              <h4>Leave a Review</h4>
+              <form method="post" action="/listings/<%=listing._id%>/review" class="needs-validation" novalidate>
+                <div class="rating">
+                  <fieldset class="starability-slot">
+                    <legend>Rating</legend>
+                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                      aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                  </fieldset>
+                </div>
+                <div class="mb-3">
+                  <label for="comment" class="form-label">Comment</label>
+                  <textarea type="text" class="form-control" placeholder="Leave your Comments..." name="review[comment]"
+                    required rows="5"></textarea>
+                  <div class="valid-feedback">comment looks good!</div>
+                  <div class="invalid-feedback">Enter your comment</div>
+                  <br>
+                  <button type="submit" class="btn btn-outline-dark">Submit</button>
+              </form>
+            </div>
+            <%}%>
+              <hr>
+              <h4>All Reviews</h4>
+              <div class="all-reviews">
+                <%for(review of listing.reviews){%>
 
-  // Set initial value
-  rangeOutput.textContent = rangeInput.value;
+                  <div class="rvw" style="border: 1px solid black;">
+                    <div>
+                      <h5 class="card-title">@<%=review.author.username%>
+                      </h5>
+                      <p class="starability-result" data-rating="<%=review.rating%>">
+                      </p>
+                    </div>
 
-  rangeInput.addEventListener('input', function() {
-    rangeOutput.textContent = this.value;
-  });
-</script>
-</body>
+                    <div class="card-text-comment">
+                      <p class="card-text">
+                        <%=review.comment%>
+                      </p>
+                    </div>
+
+                    <form method="post" action="/listings/<%=listing._id%>/review/<%=review._id%>?_method=DELETE">
+                      <%if(review && review.author.equals(currUser._id)){%>
+                        <button class="review-delete-btn">Delete</button>
+                        <%}%>
+                    </form>
+                  </div>
+                  <%}%>
+              </div>
+    </div>
+
+    <script>
+      // This is an example script, please modify as needed
+      const rangeInput = document.getElementById('rating');
+      const rangeOutput = document.getElementById('rangeValue');
+
+      // Set initial value
+      rangeOutput.textContent = rangeInput.value;
+
+      rangeInput.addEventListener('input', function () {
+        rangeOutput.textContent = this.value;
+      });
+    </script>
+  </body>
